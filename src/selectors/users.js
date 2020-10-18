@@ -4,10 +4,15 @@ function getUsersForDisplay(state) {
   const usersState = rootState(state);
   return Object.keys(usersState)
     .map((userId) => ({
-    	id: userId,
-    	name: usersState[userId].name,
-    	avatarURL: usersState[userId].avatarURL
+      id: userId,
+      name: usersState[userId].name,
+      avatarURL: usersState[userId].avatarURL
     }))
 }
 
-export { getUsersForDisplay }
+function getAnswers(state, userId) {
+  const usersState = rootState(state);
+  return usersState[userId].answers;
+}
+
+export { getUsersForDisplay, getAnswers }

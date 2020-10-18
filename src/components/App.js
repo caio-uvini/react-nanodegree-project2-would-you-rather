@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as SharedActions from '../actions/shared'
 
 import LoginPage from './LoginPage'
+import Dashboard from './Dashboard'
 
 class App extends Component {
 
@@ -15,6 +16,7 @@ class App extends Component {
     return (
       <div>
         <LoginPage />
+        <Dashboard />
       </div>
     );
   }
