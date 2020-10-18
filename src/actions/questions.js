@@ -16,9 +16,9 @@ function receiveQuestions(questions) {
 function handleAnswerQuestion(authedUser, questionId, answer) {
   return (dispatch) => {
     saveQuestionAnswer({
-      authedUser,
-      questionId,
-      answer
+      authedUser: authedUser,
+      qid: questionId,
+      answer: answer
     }).then(() => {
       dispatch(answerQuestion(authedUser, questionId, answer))
     })
@@ -49,7 +49,7 @@ function answerQuestion(authedUser, questionId, answer) {
 
 function createQuestion(question) {
   return {
-    type: TYPES.ANSWER_QUESTION,
+    type: TYPES.CREATE_QUESTION,
     question
   }
 }

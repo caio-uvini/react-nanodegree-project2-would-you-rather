@@ -1,17 +1,11 @@
 import * as AuthedUserActions from '../actions/authedUser'
 
 function handleSignIn(state, action) {
-  return {
-    ...state,
-    authedUser: action.userId
-  }
+  return action.userId;
 }
 
 function handleSignOut(state, action) {
-  return {
-    ...state,
-    authedUser: null
-  }
+  return null;
 }
 
 export default function authedUser(state = null, action) {

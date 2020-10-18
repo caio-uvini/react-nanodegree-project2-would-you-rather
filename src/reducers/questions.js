@@ -19,7 +19,7 @@ function handleAnswerQuestion(state, action) {
       ...currentQuestion,
       [action.answer]: {
         ...currentAnswer,
-        votes: currentAnswer.votes.concat(action.author)
+        votes: currentAnswer.votes.concat(action.authedUser)
       }
     }
   }
