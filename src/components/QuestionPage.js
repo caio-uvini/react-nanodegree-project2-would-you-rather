@@ -18,6 +18,7 @@ class QuestionPage extends Component {
     return (
       <div>
         <NavBar />
+        <h2>Question Details</h2>
         <QuestionCard id={questionId}>
         {
           answered

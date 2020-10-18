@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import NavBar from './NavBar'
 import QuestionList from './QuestionList'
+import NewQuestion from './NewQuestion'
 
 class Dashboard extends Component {
 
@@ -9,6 +10,7 @@ class Dashboard extends Component {
     return (
       <div>
       	<NavBar />
+        <NewQuestion />
         <QuestionList />
       </div>
     )
