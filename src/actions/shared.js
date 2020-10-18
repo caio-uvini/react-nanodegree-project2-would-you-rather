@@ -5,7 +5,7 @@ import * as QuestionsActions from './questions'
 function handleInitialData() {
   return (dispatch) => {
     return getInitialData()
-      .then(([users, questions]) => {
+      .then(({ users, questions }) => {
         dispatch(UsersActions.receiveUsers(users))
         dispatch(QuestionsActions.receiveQuestions(questions))
       })

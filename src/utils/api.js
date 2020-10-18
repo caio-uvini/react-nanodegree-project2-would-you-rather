@@ -1,18 +1,18 @@
 import { 
-	_getUsers, 
-	_getQuestions, 
-	_saveQuestion, 
-	_saveQuestionAnswer 
+  _getUsers, 
+  _getQuestions, 
+  _saveQuestion, 
+  _saveQuestionAnswer 
 } from './_DATA.js'
 
 
 function getInitialData() {
   return Promise.all([
-    _getUsers,
-    _getQuestions
+    _getUsers(),
+    _getQuestions()
   ]).then(([users, questions]) => ({
-    users,
-    questions
+    users: users,
+    questions: questions
   }))
 }
 
