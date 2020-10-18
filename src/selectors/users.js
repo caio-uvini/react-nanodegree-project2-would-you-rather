@@ -29,4 +29,28 @@ function getAnswers(state, userId) {
   return usersState[userId].answers;
 }
 
-export { getUserForDisplay, getUsersForDisplay, getAnswers }
+function getLeaderboard(state) {
+  const usersState = rootState(state);
+  
+  return Object.keys(usersState)
+    .map(userId => usersState[userId])
+    .map(user => {
+      const questions = user.questions.length;
+      const answers = Object.keys(user.answers).length
+      return {
+        user: {
+          id: user.id,
+          name: user.name,
+          avatarURL: user.avatarURL
+        },
+        score: {
+          questions: questions,
+          answers: answers,
+          total: questions + answers
+        }
+      }
+    })
+    .sort((a, b) => b.score.total - a.score.total)
+}
+
+export { getUserForDisplay, getUsersForDisplay, getAnswers, getLeaderboard }
