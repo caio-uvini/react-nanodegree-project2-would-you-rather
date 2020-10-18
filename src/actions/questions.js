@@ -54,4 +54,4 @@ function createQuestion(question) {
   }
 }
 
-export { TYPES, receiveQuestions, handleAnswerQuestion }
+export { TYPES, receiveQuestions, handleAnswerQuestion, handleCreateQuestion }
