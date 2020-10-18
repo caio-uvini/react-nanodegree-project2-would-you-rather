@@ -7,6 +7,7 @@ import * as QuestionsSelectors from '../selectors/questions';
 
 import QuestionCard from './QuestionCard';
 import QuestionCardPreviewContent from './QuestionCardPreviewContent';
+import QuestionPage from './QuestionPage';
 
 const FILTERS = {
   ANSWERED: 'answered',
@@ -35,9 +36,9 @@ class QuestionList extends Component {
     }
 
     if (this.isChecked(FILTERS.UNANSWERED, filterOption)) {
-      return questionsByStatus.answeredIds;
+      return questionsByStatus.unansweredIds;
     }
-    return questionsByStatus.unansweredIds
+    return questionsByStatus.answeredIds;
   }
 
   render() {
@@ -63,16 +64,19 @@ class QuestionList extends Component {
             value={FILTERS.ANSWERED}
             onChange={this.onFilterChange}
             checked={this.isChecked(FILTERS.ANSWERED, filterOption)}
-          />Unanswered
+          />Answered
         </div>
         
         <div>
           {
             questions.map(questionId => {
               return (
-                <QuestionCard key={questionId} id={questionId}>
-                  <QuestionCardPreviewContent id={questionId} />
-                </QuestionCard>
+                <div key={questionId}>
+                  <QuestionCard id={questionId}>
+                    <QuestionCardPreviewContent id={questionId} />
+                  </QuestionCard>
+                  <QuestionPage id={questionId} />
+                </div>
               )
             })
           }
