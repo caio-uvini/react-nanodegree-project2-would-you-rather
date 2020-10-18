@@ -16,7 +16,7 @@ function handleAnswerQuestion(state, action) {
       ...user,
       answers: {
         ...user.answers,
-        ...{ action.questionId: action.answer }
+        ...{ [action.questionId]: action.answer }
       }
     }
   }

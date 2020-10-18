@@ -6,7 +6,7 @@ import {
 } from './_DATA.js'
 
 
-function getInitialdata() {
+function getInitialData() {
   return Promise.all([
     _getUsers,
     _getQuestions
