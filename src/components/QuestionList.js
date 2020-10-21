@@ -7,7 +7,6 @@ import * as QuestionsSelectors from '../selectors/questions';
 
 import QuestionCard from './QuestionCard';
 import QuestionCardPreviewContent from './QuestionCardPreviewContent';
-import QuestionPage from './QuestionPage';
 
 const FILTERS = {
   ANSWERED: 'answered',
@@ -75,7 +74,6 @@ class QuestionList extends Component {
                   <QuestionCard id={questionId}>
                     <QuestionCardPreviewContent id={questionId} />
                   </QuestionCard>
-                  <QuestionPage id={questionId} />
                 </div>
               )
             })

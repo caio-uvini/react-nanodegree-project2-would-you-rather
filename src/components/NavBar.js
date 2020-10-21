@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import * as AuthedUserActions from '../actions/authedUser';
 
@@ -12,13 +13,13 @@ const NavBar = (props) => {
 
   return (
     <div>
-      <a href="/">Home</a>
-      <a href="/">New Question</a>
-      <a href="/">Leaderboard</a>
+      <Link to="/">Home</Link>
+      <Link to="/add">New Question</Link>
+      <Link to="/leaderboard">Leaderboard</Link>
       { authedUser && (
         <div>
           Welcome back {authedUser.name}! 
-          <a href="/" onClick={() => signOut()}>Sign Out</a>
+          <Link to="/" onClick={() => signOut()}>Sign Out</Link>
         </div>
     )}
     </div>

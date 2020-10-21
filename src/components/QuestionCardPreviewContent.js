@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import * as QuestionsSelectors from '../selectors/questions';
 
@@ -7,7 +8,7 @@ class QuestionCardPreviewContent extends Component {
 
   render() {
 
-    const { optionOne, optionTwo } = this.props;
+    const { optionOne, optionTwo , questionId } = this.props;
 
     return (
       <div style={{ margin: '5px' }}>
@@ -20,7 +21,9 @@ class QuestionCardPreviewContent extends Component {
           {optionTwo}
         </div>
         <div>
-          <a href='/'>See Poll</a>
+          <Link to={`/questions/${questionId}`}>
+            See Poll
+          </Link>
         </div>
       </div>
     )

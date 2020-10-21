@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as QuestionsActions from '../actions/questions';
@@ -10,7 +11,8 @@ class NewQuestion extends Component {
 
   state = {
     optionOne: '',
-    optionTwo: ''
+    optionTwo: '',
+    toHome: false
   }
 
   onSubmit = (event) => {
@@ -20,6 +22,9 @@ class NewQuestion extends Component {
     const {optionOne, optionTwo} = this.state;
 
     createQuestion(authedUser, optionOne, optionTwo);
+    this.setState(() => ({
+      toHome: true
+    }))
   }
 
   onOptionChanged = (event, option) => {
@@ -32,7 +37,11 @@ class NewQuestion extends Component {
 
   render() {
 
-    const {optionOne, optionTwo} = this.state;
+    const {optionOne, optionTwo, toHome} = this.state;
+
+    if (toHome) {
+      return <Redirect to='/' />
+    }
 
     return (
       <div>

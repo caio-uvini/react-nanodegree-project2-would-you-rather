@@ -24,8 +24,8 @@ class LoginPage extends Component {
 
   render() {
 
-    const {selectedValue} = this.state;
-    const {users} = this.props;
+    const { selectedValue } = this.state;
+    const { users } = this.props;
 
     const options = users.map(user => (
       <option key={user.id} value={user.id}>{user.name}</option>
@@ -37,13 +37,13 @@ class LoginPage extends Component {
 	      <form onSubmit={this.handleSubmit}>
 	      	<label>
 	      	  Choose your user to start:
-		      <select value={selectedValue} onChange={this.handleChange}>
-		        <option key="default" value="">---</option>
-		        {options}
-		      </select>
+		        <select value={selectedValue} onChange={this.handleChange}>
+		          <option key="default" value="">---</option>
+		          {options}
+		        </select>
       		</label>
       		<input type="submit" value="Start" disabled={!selectedValue} />
-      	  </form>
+      	</form>
       </div>
     )
   }

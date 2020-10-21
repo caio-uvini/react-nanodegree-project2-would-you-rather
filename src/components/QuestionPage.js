@@ -35,13 +35,13 @@ class QuestionPage extends Component {
 
 const mapStateToProps = (state, currentProps) => {
 
-  const qid = currentProps.id;
+  const { id } = currentProps.match.params
 
   const authedUser = AuthedUserSelectors.getCurrent(state);
-  const chosenOption = QuestionsSelectors.getChosenOption(state, qid, authedUser);
+  const chosenOption = QuestionsSelectors.getChosenOption(state, id, authedUser);
 
   return {
-    questionId: qid,
+    questionId: id,
     answered: chosenOption !== null
   }
 }

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import NavBar from './NavBar'
 import QuestionList from './QuestionList'
-import NewQuestion from './NewQuestion'
-import Leaderboard from './Leaderboard'
 
 class Dashboard extends Component {
 
@@ -11,9 +9,7 @@ class Dashboard extends Component {
     return (
       <div>
       	<NavBar />
-        <NewQuestion />
         <QuestionList />
-        <Leaderboard />
       </div>
     )
   }
