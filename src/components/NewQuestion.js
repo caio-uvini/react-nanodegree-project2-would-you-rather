@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as QuestionsActions from '../actions/questions';
@@ -11,20 +11,18 @@ class NewQuestion extends Component {
 
   state = {
     optionOne: '',
-    optionTwo: '',
-    toHome: false
+    optionTwo: ''
   }
 
   onSubmit = (event) => {
     event.preventDefault();
 
-    const {createQuestion, authedUser} = this.props;
+    const {createQuestion, authedUser, history} = this.props;
     const {optionOne, optionTwo} = this.state;
 
     createQuestion(authedUser, optionOne, optionTwo);
-    this.setState(() => ({
-      toHome: true
-    }))
+
+    history.push('/');
   }
 
   onOptionChanged = (event, option) => {
@@ -37,11 +35,7 @@ class NewQuestion extends Component {
 
   render() {
 
-    const {optionOne, optionTwo, toHome} = this.state;
-
-    if (toHome) {
-      return <Redirect to='/' />
-    }
+    const {optionOne, optionTwo} = this.state;
 
     return (
       <div>
@@ -82,9 +76,11 @@ const mapDispatchToProps = (dispatch) => ({
   createQuestion: (authedUser, optionOne, optionTwo) => dispatch(QuestionsActions.handleCreateQuestion(authedUser, optionOne, optionTwo))
 })
 
-const NewQuestionContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NewQuestion);
+const NewQuestionContainer = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(NewQuestion)
+);
 
 export default NewQuestionContainer;
