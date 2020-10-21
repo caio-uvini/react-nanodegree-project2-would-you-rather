@@ -14,19 +14,24 @@ class QuestionPage extends Component {
 
   render() {
 
-    const { questionId, answered } = this.props;
+    const { questionId, answered, questionExists } = this.props;
 
     return (
       <div>
         <NavBar />
         <h2>Question Details</h2>
-        <QuestionCard id={questionId}>
         {
-          answered
-          ? <QuestionCardAnsweredContent id={questionId} />
-          : <QuestionCardUnansweredContent id={questionId} />
+          questionExists 
+          ? <QuestionCard id={questionId}>
+            {
+              answered
+              ? <QuestionCardAnsweredContent id={questionId} />
+              : <QuestionCardUnansweredContent id={questionId} />
+            }
+            </QuestionCard>
+          : <div>Question not found!</div>
         }
-        </QuestionCard>
+        
       </div>
     )
   }
@@ -37,11 +42,18 @@ const mapStateToProps = (state, currentProps) => {
 
   const { id } = currentProps.match.params
 
+  if (!QuestionsSelectors.exists(state, id)) {
+    return {
+      questionExists: false
+    }
+  }
+
   const authedUser = AuthedUserSelectors.getCurrent(state);
   const chosenOption = QuestionsSelectors.getChosenOption(state, id, authedUser);
 
   return {
     questionId: id,
+    questionExists: true,
     answered: chosenOption !== null
   }
 }

@@ -16,6 +16,11 @@ function getAllIdsGroupedByAnswerStatusSorted(state, answers) {
   }
 }
 
+function exists(state, questionId) {
+  const questionsState = rootState(state);
+  return questionsState[questionId] !== undefined;
+}
+
 function getContentById(state, questionId) {
   const questionsState = rootState(state);
   const question = questionsState[questionId];
@@ -33,6 +38,10 @@ function getChosenOption(state, questionId, userId) {
 
   const questionsState = rootState(state);
   const question = questionsState[questionId];
+
+  if (!question) {
+    return null;
+  }
 
   if (question.optionOne.votes.includes(userId)) {
     return "optionOne";
@@ -91,4 +100,4 @@ function getVotesStats(state, questionId) {
   }
 }
 
-export { getAllIdsGroupedByAnswerStatusSorted, getContentById, getChosenOption, getVotesStats };
+export { getAllIdsGroupedByAnswerStatusSorted, getContentById, getChosenOption, getVotesStats, exists };
