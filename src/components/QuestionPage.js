@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as QuestionsSelectors from '../selectors/questions';
@@ -26,7 +27,6 @@ class QuestionPage extends Component {
           : <QuestionCardUnansweredContent id={questionId} />
         }
         </QuestionCard>
-
       </div>
     )
   }
@@ -49,9 +49,11 @@ const mapStateToProps = (state, currentProps) => {
 
 const mapDispatchToProps = (dispatch) => ({})
 
-const QuestionPageContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(QuestionPage);
+const QuestionPageContainer = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(QuestionPage)
+);
 
 export default QuestionPageContainer;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import * as AuthedUserActions from '../actions/authedUser';
 import * as UsersSelectors from '../selectors/users';
@@ -10,9 +11,11 @@ class LoginPage extends Component {
     selectedValue: ""
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = (event, onSignInCompleted) => {
     event.preventDefault();
-    this.props.signIn(this.state.selectedValue)
+    
+    this.props.signIn(this.state.selectedValue);
+    onSignInCompleted();
   }
 
   handleChange = (event) => {
@@ -25,7 +28,10 @@ class LoginPage extends Component {
   render() {
 
     const { selectedValue } = this.state;
-    const { users } = this.props;
+    const { users, history, location } = this.props;
+
+    const { from } = location.state || { from: { pathname: '/'} };
+    const redirect = () => history.replace(from);
 
     const options = users.map(user => (
       <option key={user.id} value={user.id}>{user.name}</option>
@@ -34,7 +40,7 @@ class LoginPage extends Component {
     return (
       <div>
       	<h1>Would you rather...</h1>
-	      <form onSubmit={this.handleSubmit}>
+	      <form onSubmit={(event) => this.handleSubmit(event, redirect)}>
 	      	<label>
 	      	  Choose your user to start:
 		        <select value={selectedValue} onChange={this.handleChange}>
@@ -57,9 +63,11 @@ const mapDispatchToProps = (dispatch) => ({
 	signIn: (userId) => dispatch(AuthedUserActions.signIn(userId))
 })
 
-const LoginPageContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LoginPage);
+const LoginPageContainer = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(LoginPage)
+);
 
 export default LoginPageContainer;

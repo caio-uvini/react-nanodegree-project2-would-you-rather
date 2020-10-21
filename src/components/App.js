@@ -11,6 +11,8 @@ import QuestionPage from './QuestionPage'
 import NewQuestion from './NewQuestion'
 import Leaderboard from './Leaderboard'
 
+import PrivateRoute from './PrivateRoute';
+
 class App extends Component {
 
   componentDidMount() {
@@ -28,11 +30,17 @@ class App extends Component {
           }
           </Route>
           
-          <Route path='/questions/:id' component={QuestionPage} />
+          <PrivateRoute path='/questions/:id'>
+            <QuestionPage />
+          </PrivateRoute>
           
-          <Route path='/add' component={NewQuestion} />
+          <PrivateRoute path='/add'>
+            <NewQuestion />
+          </PrivateRoute>
           
-          <Route path='/leaderboard' component={Leaderboard} />
+          <PrivateRoute path='/leaderboard'>
+            <Leaderboard />
+          </PrivateRoute>
         </BrowserRouter>
       </div>
     );
