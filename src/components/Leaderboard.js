@@ -15,7 +15,7 @@ class Leaderboard extends Component {
       <div>
         <NavBar />
         <h1>Leaderboard</h1>
-        <ul>
+        <div className='leaderboard'>
           {
             leaderboard.map((entry, idx) => <LeaderboardEntry 
                 key={entry.user.id} 
@@ -26,7 +26,7 @@ class Leaderboard extends Component {
               />
             )
           }
-        </ul>
+        </div>
       </div>
     )
   }

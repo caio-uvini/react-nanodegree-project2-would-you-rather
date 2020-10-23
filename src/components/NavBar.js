@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import * as AuthedUserActions from '../actions/authedUser';
 
@@ -12,16 +12,33 @@ const NavBar = (props) => {
   const {authedUser, signOut} = props;
 
   return (
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/add">New Question</Link>
-      <Link to="/leaderboard">Leaderboard</Link>
-      { authedUser && (
-        <div>
-          Welcome back {authedUser.name}! 
-          <Link to="/" onClick={() => signOut()}>Sign Out</Link>
-        </div>
-    )}
+    <div className='nav'>
+      <ul>
+        <li>
+          <NavLink to="/" exact activeClassName={'active'}>Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/add" activeClassName={'active'}>New Question</NavLink>
+        </li>
+        <li>
+          <NavLink to="/leaderboard" activeClassName={'active'}>Leaderboard</NavLink>
+        </li>
+        { authedUser && (
+            <li className='authed-user'>
+              <div className='center'>
+                <img className='avatar'
+                  src={authedUser.avatarURL} 
+                  alt={`Avatar of ${authedUser.name}`} 
+                />
+                <div>
+                  <span>Hi {authedUser.firstName}! </span>
+                  <Link to="/" className='active' onClick={() => signOut()}>Sign Out</Link>
+                </div>
+              </div>
+            </li>
+          )
+        }
+      </ul>
     </div>
   )
 }

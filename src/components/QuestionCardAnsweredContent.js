@@ -18,13 +18,13 @@ class QuestionCardAnsweredContent extends Component {
     const optTwoText = this.formatOption(content.optionTwo, stats.optionTwo, stats.total);
 
     return (
-      <div style={{ margin: '5px' }}>
-        Would you rather...
-        <div>
+      <div>
+        <div className='question-title'>Would you rather...</div>
+        <div className='question-option'>
           {chosenOption === 'optionOne' ? <b>{optOneText}</b> : optOneText}
         </div>
-        or...
-        <div>
+        <div className="strong">or...</div>
+        <div className='question-option'>
           {chosenOption === 'optionTwo' ? <b>{optTwoText}</b>: optTwoText}
         </div>
       </div>

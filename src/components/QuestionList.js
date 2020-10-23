@@ -49,8 +49,9 @@ class QuestionList extends Component {
 
     return (
       <div>
-	    <div>
-          See questions: 
+        <h1>Questions</h1>
+        <div>
+          Filter by: 
           <input
             type="radio"
             value={FILTERS.UNANSWERED}
@@ -65,16 +66,15 @@ class QuestionList extends Component {
             checked={this.isChecked(FILTERS.ANSWERED, filterOption)}
           />Answered
         </div>
+        <hr/>
         
-        <div>
+        <div className='question-list'>
           {
             questions.map(questionId => {
               return (
-                <div key={questionId}>
-                  <QuestionCard id={questionId}>
-                    <QuestionCardPreviewContent id={questionId} />
-                  </QuestionCard>
-                </div>
+                <QuestionCard key={questionId} id={questionId}>
+                  <QuestionCardPreviewContent id={questionId} />
+                </QuestionCard>
               )
             })
           }

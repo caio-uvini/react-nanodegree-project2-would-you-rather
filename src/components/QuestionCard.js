@@ -13,28 +13,17 @@ class QuestionCard extends Component {
     const { author, creationDate } = this.props;
 
     return (
-      <div style={{ marginTop: '5px' }}>
-        <hr />
-        <div>
-          Created by
-          <div>
-            
-            <img 
-              src={author.avatarURL} 
-              alt={`Avatar of ${author.name}`} 
-              style={{ 
-                height: '50px',
-                borderRadius: '25px'
-              }}
-            />
-            
-            <div>{author.name}</div>
-          </div>
-          on {creationDate}
-        </div>
-        
-        {this.props.children}
-        <hr />
+      <div className='question-card'>
+        <div className='question-author'>
+          <img 
+            src={author.avatarURL} 
+            alt={`Avatar of ${author.name}`} 
+            className='avatar'
+          />
+          <div>{author.name}</div>
+          <span className='question-created-at'>{creationDate}</span>
+        </div>        
+        <div className='question-content'>{this.props.children}</div>
       </div>
     )
 

@@ -1,33 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import * as QuestionsSelectors from '../selectors/questions';
 
 class QuestionCardPreviewContent extends Component {
 
+  handleSeePoll = (history, questionId) => {
+    history.push(`/questions/${questionId}`)
+  }
+
   render() {
 
-    const { optionOne, optionTwo , questionId } = this.props;
+    const { optionOne, optionTwo, history, questionId } = this.props;
+
+    const seePoll = () => this.handleSeePoll(history, questionId);
 
     return (
-      <div style={{ margin: '5px' }}>
-        Would you rather...
+      <div>
+        <div className='question-title'>Would you rather...</div>
         <div>
-          {optionOne}
-        </div>
-        or...
-        <div>
-          {optionTwo}
-        </div>
-        <div>
-          <Link to={`/questions/${questionId}`}>
-            See Poll
-          </Link>
+          <div className='question-option'>
+            {optionOne}
+          </div>
+          <div className='strong'>or...</div>
+          <div className='question-option'>
+            {optionTwo}
+          </div>
+          <div className='question-action'>
+            <button className='btn' onClick={seePoll}>
+              See Poll
+            </button>
+          </div>
         </div>
       </div>
     )
-
   }
 
 }
@@ -46,9 +53,11 @@ const mapStateToProps = (state, currentProps) => {
 
 const mapDispatchToProps = (dispatch) => ({})
 
-const QuestionCardPreviewContentContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(QuestionCardPreviewContent);
+const QuestionCardPreviewContentContainer = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(QuestionCardPreviewContent)
+);
 
 export default QuestionCardPreviewContentContainer;

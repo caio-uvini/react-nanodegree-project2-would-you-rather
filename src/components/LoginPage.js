@@ -38,18 +38,33 @@ class LoginPage extends Component {
     ))
 
     return (
-      <div>
-      	<h1>Would you rather...</h1>
-	      <form onSubmit={(event) => this.handleSubmit(event, redirect)}>
-	      	<label>
-	      	  Choose your user to start:
-		        <select value={selectedValue} onChange={this.handleChange}>
-		          <option key="default" value="">---</option>
-		          {options}
-		        </select>
-      		</label>
-      		<input type="submit" value="Start" disabled={!selectedValue} />
-      	</form>
+      <div className='login-page'>
+        <div className='login-card'>
+        	<h1>Would you rather...</h1>
+  	      <form onSubmit={(event) => this.handleSubmit(event, redirect)}>
+  	      	<div>
+  	      	  <div>Choose your user:</div>
+  		        <div>
+                <select 
+                  className='login-user-select' 
+                  value={selectedValue} 
+                  onChange={this.handleChange}
+                >
+  		            <option key="default" value="">---</option>
+  		            {options}
+  		          </select>
+              </div>
+        		</div>
+        		
+            <button 
+              className='btn login-btn' 
+              type="submit" 
+              disabled={!selectedValue}
+            >
+              Start
+            </button>
+        	</form>
+        </div>
       </div>
     )
   }

@@ -37,29 +37,42 @@ class QuestionCardUnansweredContent extends Component {
     const { selectedOption } = this.state;
 
     return (
-      <div style={{ margin: '5px' }}>
-        Would you rather...
+      <div>
+        <div className='question-title'>Would you rather...</div>
         <form onSubmit={this.handleSubmit}>
-          <input
-            type="radio"
-            value="optionOne"
-            onChange={this.onOptionSelected}
-            checked={this.isChecked("optionOne")}
-          />{optionOne}
-          <div>or...</div>
-          <input
-            type="radio"
-            value="optionTwo"
-            onChange={this.onOptionSelected}
-            checked={this.isChecked("optionTwo")}
-          />{optionTwo}
-          <input type="submit" value="Vote" disabled={selectedOption === null}/>
+          <div className='question-option'>
+            <input
+              type="radio"
+              value="optionOne"
+              onChange={this.onOptionSelected}
+              checked={this.isChecked("optionOne")}
+            />
+            {optionOne}
+          </div>
+          <div className="strong">or...</div>
+          <div className='question-option'>
+            <input
+              type="radio"
+              value="optionTwo"
+              onChange={this.onOptionSelected}
+              checked={this.isChecked("optionTwo")}
+            />
+            {optionTwo}
+          </div>
+          
+          <div className='question-action'>
+            <button 
+              className='btn' 
+              type="submit"
+              disabled={selectedOption === null}
+            >
+              Vote
+            </button>
+          </div>
         </form>
       </div>
     )
-
   }
-
 }
 
 const mapStateToProps = (state, currentProps) => {

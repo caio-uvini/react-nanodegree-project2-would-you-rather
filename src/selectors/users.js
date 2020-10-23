@@ -20,6 +20,7 @@ function formatForDisplay(user) {
   return {
     id: user.id,
     name: user.name,
+    firstName: getFirstName(user.name),
     avatarURL: user.avatarURL
   }
 }
@@ -51,6 +52,10 @@ function getLeaderboard(state) {
       }
     })
     .sort((a, b) => b.score.total - a.score.total)
+}
+
+function getFirstName(name) {
+  return name.split(' ')[0];
 }
 
 export { getUserForDisplay, getUsersForDisplay, getAnswers, getLeaderboard }

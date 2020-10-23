@@ -41,28 +41,38 @@ class NewQuestion extends Component {
       <div>
         <NavBar />
         <h1>New Question</h1>
-        <form onSubmit={this.onSubmit}>
-          <div>Would you rather...</div>
-          <input 
-            type="text" 
-            value={optionOne} 
-            onChange={(event) => this.onOptionChanged(event, "optionOne")} 
-            placeholder="Fill in option one..." 
-          />
-          <div>...or...</div>
-          <input 
-            type="text" 
-            value={optionTwo} 
-            onChange={(event) => this.onOptionChanged(event, "optionTwo")} 
-            placeholder="Fill in option two..." 
-          />
-
-          <input 
-            type="submit" 
-            value="Submit" 
-            disabled={!optionOne || !optionTwo} 
-          />
-        </form>
+        <div className='new-question'>
+          <form className='new-question-form' onSubmit={this.onSubmit}>
+              <div className='question-title'>Would you rather...</div>
+              <div className='question-option-input'>
+                <input 
+                  type="text" 
+                  value={optionOne} 
+                  onChange={(event) => this.onOptionChanged(event, "optionOne")} 
+                  placeholder="Fill in option one..." 
+                />
+              </div>
+              <div className="strong">or...</div>
+              <div className='question-option-input'>
+                <input 
+                  type="text" 
+                  value={optionTwo} 
+                  onChange={(event) => this.onOptionChanged(event, "optionTwo")} 
+                  placeholder="Fill in option two..." 
+                />
+              </div>
+  
+            <div className='question-action-extra'>
+              <button
+                className='btn' 
+                type="submit" 
+                disabled={!optionOne || !optionTwo} 
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
