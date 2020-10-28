@@ -54,8 +54,12 @@ function getLeaderboard(state) {
     .sort((a, b) => b.score.total - a.score.total)
 }
 
+function hasData(state) {
+  return Object.keys(rootState(state)).length > 0;
+}
+
 function getFirstName(name) {
   return name.split(' ')[0];
 }
 
-export { getUserForDisplay, getUsersForDisplay, getAnswers, getLeaderboard }
+export { hasData, getUserForDisplay, getUsersForDisplay, getAnswers, getLeaderboard }

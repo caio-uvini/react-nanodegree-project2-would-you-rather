@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
+import LoadingBar from 'react-redux-loading';
 
 import * as SharedActions from '../actions/shared';
 import * as AuthedUserSelectors from '../selectors/authedUser';
+import * as UsersSelectors from '../selectors/users';
+import * as QuestionsSelectors from '../selectors/questions';
 
 import LoginPage from './LoginPage'
 import Dashboard from './Dashboard'
@@ -21,34 +24,43 @@ class App extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <BrowserRouter>
-          
-          <Route path='/' exact>
+      <BrowserRouter>
+        <Fragment>
+          <LoadingBar />
           {
-            this.props.authedUser ? <Dashboard /> : <LoginPage />
+            this.props.loading
+            ? null
+            : (
+                <div className='container'>
+                  <Route path='/' exact>
+                  {
+                    this.props.authedUser ? <Dashboard /> : <LoginPage />
+                  }
+                  </Route>
+                  
+                  <PrivateRoute path='/questions/:id'>
+                    <QuestionPage />
+                  </PrivateRoute>
+                  
+                  <PrivateRoute path='/add'>
+                    <NewQuestion />
+                  </PrivateRoute>
+                  
+                  <PrivateRoute path='/leaderboard'>
+                    <Leaderboard />
+                  </PrivateRoute>
+                </div>
+              )
           }
-          </Route>
-          
-          <PrivateRoute path='/questions/:id'>
-            <QuestionPage />
-          </PrivateRoute>
-          
-          <PrivateRoute path='/add'>
-            <NewQuestion />
-          </PrivateRoute>
-          
-          <PrivateRoute path='/leaderboard'>
-            <Leaderboard />
-          </PrivateRoute>
-        </BrowserRouter>
-      </div>
+        </Fragment>
+      </BrowserRouter>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  authedUser: AuthedUserSelectors.getCurrent(state)
+  authedUser: AuthedUserSelectors.getCurrent(state),
+  loading: !UsersSelectors.hasData(state) || !QuestionsSelectors.hasData(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -100,4 +100,8 @@ function getVotesStats(state, questionId) {
   }
 }
 
-export { getAllIdsGroupedByAnswerStatusSorted, getContentById, getChosenOption, getVotesStats, exists };
+function hasData(state) {
+  return Object.keys(rootState(state)).length > 0;
+}
+
+export { hasData, getAllIdsGroupedByAnswerStatusSorted, getContentById, getChosenOption, getVotesStats, exists };
