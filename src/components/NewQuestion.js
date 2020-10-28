@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as QuestionsActions from '../actions/questions';
@@ -8,6 +9,11 @@ import * as QuestionsActions from '../actions/questions';
 import NavBar from './NavBar';
 
 class NewQuestion extends Component {
+
+  static propTypes = {
+    authedUser: PropTypes.string.isRequired,
+    createQuestion: PropTypes.func.isRequired
+  }
 
   state = {
     optionOne: '',

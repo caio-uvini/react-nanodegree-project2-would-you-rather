@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import * as QuestionsSelectors from '../selectors/questions';
 import * as UsersSelectors from '../selectors/users';
@@ -24,6 +25,11 @@ const QuestionCard = (props) => {
       <div className='question-content'>{props.children}</div>
     </div>
   );
+};
+
+QuestionCard.propTypes = {
+  author: PropTypes.object.isRequired,
+  creationDate: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, currentProps) => {

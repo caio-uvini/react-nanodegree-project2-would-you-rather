@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const LeaderboardEntry = (props) => {
 
@@ -38,6 +39,13 @@ const LeaderboardEntry = (props) => {
         </div>
       </div>
     );
+};
+
+LeaderboardEntry.propTypes = {
+  authedUser: PropTypes.string.isRequired,
+  position: PropTypes.number.isRequired,
+  user: PropTypes.object.isRequired,
+  score: PropTypes.object.isRequired
 };
 
 export default LeaderboardEntry;

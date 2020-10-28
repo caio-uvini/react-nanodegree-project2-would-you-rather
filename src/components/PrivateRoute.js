@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import * as AuthedUserSelectors from '../selectors/authedUser';
 
@@ -14,6 +15,10 @@ const PrivateRoute = ({ children, authedUser, ...rest }) => {
       }
     />
   );
+};
+
+PrivateRoute.propTypes = {
+  authedUser: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({

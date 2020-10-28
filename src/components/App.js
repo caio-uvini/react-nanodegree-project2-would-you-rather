@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
+import PropTypes from 'prop-types';
 
 import * as SharedActions from '../actions/shared';
 import * as AuthedUserSelectors from '../selectors/authedUser';
@@ -17,6 +18,12 @@ import Leaderboard from './Leaderboard';
 import PrivateRoute from './PrivateRoute';
 
 class App extends Component {
+
+  static propTypes = {
+    authedUser: PropTypes.string,
+    loading: PropTypes.bool.isRequired,
+    loadInitialData: PropTypes.func.isRequired
+  }
 
   componentDidMount() {
     this.props.loadInitialData();

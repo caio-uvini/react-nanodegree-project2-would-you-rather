@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as AuthedUserActions from '../actions/authedUser';
 import * as UsersSelectors from '../selectors/users';
 
 class LoginPage extends Component {
+
+  static propTypes = {
+    users: PropTypes.array,
+    signIn: PropTypes.func.isRequired
+  }
 
   state = {
     selectedValue: ""

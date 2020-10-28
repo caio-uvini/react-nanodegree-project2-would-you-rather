@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as QuestionsSelectors from '../selectors/questions';
@@ -33,6 +34,12 @@ const QuestionPage = (props) => {
       </div>
     </div>
   );
+};
+
+QuestionPage.propTypes = {
+  questionId: PropTypes.string,
+  questionExists: PropTypes.bool.isRequired,
+  answered: PropTypes.bool
 };
 
 const mapStateToProps = (state, currentProps) => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as QuestionsSelectors from '../selectors/questions';
@@ -74,6 +75,13 @@ class QuestionCardUnansweredContent extends Component {
     );
   }
 }
+
+QuestionCardUnansweredContent.propTypes = {
+  questionId: PropTypes.string.isRequired,
+  optionOne: PropTypes.string.isRequired,
+  optionTwo: PropTypes.string.isRequired,
+  authedUser: PropTypes.string.isRequired
+};
 
 const mapStateToProps = (state, currentProps) => {
 

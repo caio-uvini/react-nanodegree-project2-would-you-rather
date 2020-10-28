@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as AuthedUserActions from '../actions/authedUser';
 
@@ -41,6 +42,11 @@ const NavBar = (props) => {
       </ul>
     </div>
   );
+};
+
+NavBar.propTypes = {
+  authedUser: PropTypes.object,
+  signOut: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {

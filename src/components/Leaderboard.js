@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as UsersSelectors from '../selectors/users';
@@ -29,6 +30,11 @@ const Leaderboard = (props) => {
       </div>
     </div>
   );
+};
+
+Leaderboard.propTypes = {
+  authedUser: PropTypes.string.isRequired,
+  leaderboard: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as QuestionsSelectors from '../selectors/questions';
 
@@ -33,6 +34,12 @@ const QuestionCardPreviewContent = (props) => {
       </div>
     </div>
   );
+};
+
+QuestionCardPreviewContent.propTypes = {
+  questionId: PropTypes.string.isRequired,
+  optionOne: PropTypes.string.isRequired,
+  optionTwo: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, currentProps) => {

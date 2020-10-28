@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as UsersSelectors from '../selectors/users';
@@ -14,6 +15,10 @@ const FILTERS = {
 };
 
 class QuestionList extends Component {
+
+  static propTypes = {
+    questionsByStatus: PropTypes.object
+  }
 
   state = {
     filterOption: FILTERS.UNANSWERED
