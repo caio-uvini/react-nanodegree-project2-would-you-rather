@@ -1,3 +1,5 @@
+import { showLoading, hideLoading } from 'react-redux-loading';
+
 import { saveQuestion, saveQuestionAnswer } from '../utils/api';
 
 const TYPES = {
@@ -15,24 +17,28 @@ function receiveQuestions(questions) {
 
 function handleAnswerQuestion(authedUser, questionId, answer) {
   return (dispatch) => {
+    dispatch(showLoading());
     saveQuestionAnswer({
       authedUser: authedUser,
       qid: questionId,
       answer: answer
     }).then(() => {
       dispatch(answerQuestion(authedUser, questionId, answer));
+      dispatch(hideLoading());
     });
   };
 }
 
 function handleCreateQuestion(authedUser, optionOne, optionTwo) {
   return (dispatch) => {
+    dispatch(showLoading());
     saveQuestion({
       author: authedUser,
       optionOneText: optionOne,
       optionTwoText: optionTwo
     }).then((question) => {
       dispatch(createQuestion(question));
+      dispatch(hideLoading());
     });
   };
 }
