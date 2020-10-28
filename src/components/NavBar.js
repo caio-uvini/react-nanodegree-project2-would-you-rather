@@ -41,7 +41,7 @@ const NavBar = (props) => {
       </ul>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => {
 

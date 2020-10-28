@@ -38,6 +38,6 @@ const LeaderboardEntry = (props) => {
         </div>
       </div>
     );
-}
+};
 
 export default LeaderboardEntry;

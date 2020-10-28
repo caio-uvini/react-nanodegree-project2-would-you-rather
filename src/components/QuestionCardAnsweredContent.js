@@ -1,37 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as QuestionsSelectors from '../selectors/questions';
 
-class QuestionCardAnsweredContent extends Component {
+const QuestionCardAnsweredContent = (props) => {
 
-  formatOption = (optionText, optionStats, total) => {
+  const formatOption = (optionText, optionStats, total) => {
     return `${optionText} - ${optionStats.count}/${total} (${optionStats.relative}%)`;
-  }
+  };
 
-  render() {
+  const { chosenOption, content, stats } = props;
 
-    const { chosenOption, content, stats } = this.props;
+  const optOneText = formatOption(content.optionOne, stats.optionOne, stats.total);
+  const optTwoText = formatOption(content.optionTwo, stats.optionTwo, stats.total);
 
-    const optOneText = this.formatOption(content.optionOne, stats.optionOne, stats.total);
-    const optTwoText = this.formatOption(content.optionTwo, stats.optionTwo, stats.total);
-
-    return (
-      <div>
-        <div className='question-title'>Would you rather...</div>
-        <div className='question-option'>
-          {chosenOption === 'optionOne' ? <b>{optOneText}</b> : optOneText}
-        </div>
-        <div className="strong">or...</div>
-        <div className='question-option'>
-          {chosenOption === 'optionTwo' ? <b>{optTwoText}</b>: optTwoText}
-        </div>
+  return (
+    <div>
+      <div className='question-title'>Would you rather...</div>
+      <div className='question-option'>
+        {chosenOption === 'optionOne' ? <b>{optOneText}</b> : optOneText}
       </div>
-    );
-  }
-
-}
+      <div className="strong">or...</div>
+      <div className='question-option'>
+        {chosenOption === 'optionTwo' ? <b>{optTwoText}</b>: optTwoText}
+      </div>
+    </div>
+  );
+};
 
 const mapStateToProps = (state, currentProps) => {
 

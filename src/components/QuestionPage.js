@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -10,34 +10,30 @@ import QuestionCard from './QuestionCard';
 import QuestionCardAnsweredContent from './QuestionCardAnsweredContent';
 import QuestionCardUnansweredContent from './QuestionCardUnansweredContent';
 
-class QuestionPage extends Component {
+const QuestionPage = (props) => {
 
-  render() {
+  const { questionId, answered, questionExists } = props;
 
-    const { questionId, answered, questionExists } = this.props;
-
-    return (
-      <div>
-        <NavBar />
-        <h1>Question Details</h1>
-        <div className='question-details'>
-          {
-            questionExists 
-            ? <QuestionCard id={questionId}>
-              {
-                answered
-                ? <QuestionCardAnsweredContent id={questionId} />
-                : <QuestionCardUnansweredContent id={questionId} />
-              }
-              </QuestionCard>
-            : <div className='not-found'>Question not found!</div>
-          }
-        </div>
+  return (
+    <div>
+      <NavBar />
+      <h1>Question Details</h1>
+      <div className='question-details'>
+        {
+          questionExists 
+          ? <QuestionCard id={questionId}>
+            {
+              answered
+              ? <QuestionCardAnsweredContent id={questionId} />
+              : <QuestionCardUnansweredContent id={questionId} />
+            }
+            </QuestionCard>
+          : <div className='not-found'>Question not found!</div>
+        }
       </div>
-    );
-  }
-
-}
+    </div>
+  );
+};
 
 const mapStateToProps = (state, currentProps) => {
 

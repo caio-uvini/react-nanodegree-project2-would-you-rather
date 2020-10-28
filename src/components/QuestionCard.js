@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import * as QuestionsSelectors from '../selectors/questions';
@@ -6,30 +6,25 @@ import * as UsersSelectors from '../selectors/users';
 
 import {formatDate} from '../utils/helpers';
 
-class QuestionCard extends Component {
+const QuestionCard = (props) => {
 
-  render() {
+  const { author, creationDate } = props;
 
-    const { author, creationDate } = this.props;
-
-    return (
-      <div className='question-card'>
-        <div className='question-author'>
-          <img 
-            src={author.avatarURL} 
-            alt={`Avatar of ${author.name}`} 
-            className='avatar'
-          />
-          <div>{author.name}</div>
-          <span className='question-created-at'>{creationDate}</span>
-        </div>        
-        <div className='question-content'>{this.props.children}</div>
-      </div>
-    );
-
-  }
-
-}
+  return (
+    <div className='question-card'>
+      <div className='question-author'>
+        <img 
+          src={author.avatarURL} 
+          alt={`Avatar of ${author.name}`} 
+          className='avatar'
+        />
+        <div>{author.name}</div>
+        <span className='question-created-at'>{creationDate}</span>
+      </div>        
+      <div className='question-content'>{props.children}</div>
+    </div>
+  );
+};
 
 const mapStateToProps = (state, currentProps) => {
 

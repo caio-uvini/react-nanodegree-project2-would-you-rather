@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import NavBar from './NavBar';
 import QuestionList from './QuestionList';
 
-class Dashboard extends Component {
-
-  render() {
-    return (
+const Dashboard = () => {
+  return (
       <div>
-      	<NavBar />
+        <NavBar />
         <QuestionList />
       </div>
     );
-  }
-}
+};
 
 export default Dashboard;
