@@ -22,7 +22,7 @@ class LoginPage extends Component {
     const value = event.target.value;
     this.setState(() => ({
       selectedValue: value
-    }))
+    }));
   }
 
   render() {
@@ -35,7 +35,7 @@ class LoginPage extends Component {
 
     const options = users.map(user => (
       <option key={user.id} value={user.id}>{user.name}</option>
-    ))
+    ));
 
     return (
       <div className='login-page'>
@@ -66,17 +66,17 @@ class LoginPage extends Component {
         	</form>
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   users: UsersSelectors.getUsersForDisplay(state)
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
 	signIn: (userId) => dispatch(AuthedUserActions.signIn(userId))
-})
+});
 
 const LoginPageContainer = withRouter(
   connect(

@@ -74,17 +74,17 @@ class NewQuestion extends Component {
           </form>
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   authedUser: AuthedUserSelectors.getCurrent(state)
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   createQuestion: (authedUser, optionOne, optionTwo) => dispatch(QuestionsActions.handleCreateQuestion(authedUser, optionOne, optionTwo))
-})
+});
 
 const NewQuestionContainer = withRouter(
   connect(

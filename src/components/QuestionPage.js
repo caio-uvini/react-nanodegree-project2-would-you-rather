@@ -33,21 +33,20 @@ class QuestionPage extends Component {
             : <div className='not-found'>Question not found!</div>
           }
         </div>
-        
       </div>
-    )
+    );
   }
 
 }
 
 const mapStateToProps = (state, currentProps) => {
 
-  const { id } = currentProps.match.params
+  const { id } = currentProps.match.params;
 
   if (!QuestionsSelectors.exists(state, id)) {
     return {
       questionExists: false
-    }
+    };
   }
 
   const authedUser = AuthedUserSelectors.getCurrent(state);
@@ -57,11 +56,11 @@ const mapStateToProps = (state, currentProps) => {
     questionId: id,
     questionExists: true,
     answered: chosenOption !== null
-  }
-}
+  };
+};
 
 
-const mapDispatchToProps = (dispatch) => ({})
+const mapDispatchToProps = (dispatch) => ({});
 
 const QuestionPageContainer = withRouter(
   connect(

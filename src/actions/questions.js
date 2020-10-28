@@ -1,16 +1,16 @@
-import { saveQuestion, saveQuestionAnswer } from '../utils/api'
+import { saveQuestion, saveQuestionAnswer } from '../utils/api';
 
 const TYPES = {
   RECEIVE_QUESTIONS: 'RECEIVE_QUESTIONS',
   ANSWER_QUESTION: 'ANSWER_QUESTION',
   CREATE_QUESTION: 'CREATE_QUESTION'
-}
+};
 
 function receiveQuestions(questions) {
   return {
     type: TYPES.RECEIVE_QUESTIONS,
     questions: questions
-  }
+  };
 }
 
 function handleAnswerQuestion(authedUser, questionId, answer) {
@@ -20,9 +20,9 @@ function handleAnswerQuestion(authedUser, questionId, answer) {
       qid: questionId,
       answer: answer
     }).then(() => {
-      dispatch(answerQuestion(authedUser, questionId, answer))
-    })
-  }
+      dispatch(answerQuestion(authedUser, questionId, answer));
+    });
+  };
 }
 
 function handleCreateQuestion(authedUser, optionOne, optionTwo) {
@@ -32,9 +32,9 @@ function handleCreateQuestion(authedUser, optionOne, optionTwo) {
       optionOneText: optionOne,
       optionTwoText: optionTwo
     }).then((question) => {
-      dispatch(createQuestion(question))
-    })
-  }
+      dispatch(createQuestion(question));
+    });
+  };
 }
 
 
@@ -44,14 +44,14 @@ function answerQuestion(authedUser, questionId, answer) {
     authedUser,
     questionId,
     answer
-  }
+  };
 }
 
 function createQuestion(question) {
   return {
     type: TYPES.CREATE_QUESTION,
     question
-  }
+  };
 }
 
-export { TYPES, receiveQuestions, handleAnswerQuestion, handleCreateQuestion }
+export { TYPES, receiveQuestions, handleAnswerQuestion, handleCreateQuestion };

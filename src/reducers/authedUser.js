@@ -1,4 +1,4 @@
-import * as AuthedUserActions from '../actions/authedUser'
+import * as AuthedUserActions from '../actions/authedUser';
 
 function handleSignIn(state, action) {
   return action.userId;

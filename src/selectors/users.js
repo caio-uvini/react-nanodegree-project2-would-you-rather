@@ -22,7 +22,7 @@ function formatForDisplay(user) {
     name: user.name,
     firstName: getFirstName(user.name),
     avatarURL: user.avatarURL
-  }
+  };
 }
 
 function getAnswers(state, userId) {
@@ -37,7 +37,7 @@ function getLeaderboard(state) {
     .map(userId => usersState[userId])
     .map(user => {
       const questions = user.questions.length;
-      const answers = Object.keys(user.answers).length
+      const answers = Object.keys(user.answers).length;
       return {
         user: {
           id: user.id,
@@ -49,9 +49,9 @@ function getLeaderboard(state) {
           answers: answers,
           total: questions + answers
         }
-      }
+      };
     })
-    .sort((a, b) => b.score.total - a.score.total)
+    .sort((a, b) => b.score.total - a.score.total);
 }
 
 function hasData(state) {
@@ -62,4 +62,4 @@ function getFirstName(name) {
   return name.split(' ')[0];
 }
 
-export { hasData, getUserForDisplay, getUsersForDisplay, getAnswers, getLeaderboard }
+export { hasData, getUserForDisplay, getUsersForDisplay, getAnswers, getLeaderboard };

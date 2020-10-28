@@ -8,11 +8,11 @@ import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as UsersSelectors from '../selectors/users';
 import * as QuestionsSelectors from '../selectors/questions';
 
-import LoginPage from './LoginPage'
-import Dashboard from './Dashboard'
-import QuestionPage from './QuestionPage'
-import NewQuestion from './NewQuestion'
-import Leaderboard from './Leaderboard'
+import LoginPage from './LoginPage';
+import Dashboard from './Dashboard';
+import QuestionPage from './QuestionPage';
+import NewQuestion from './NewQuestion';
+import Leaderboard from './Leaderboard';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -61,16 +61,16 @@ class App extends Component {
 const mapStateToProps = (state) => ({
   authedUser: AuthedUserSelectors.getCurrent(state),
   loading: !UsersSelectors.hasData(state) || !QuestionsSelectors.hasData(state)
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   loadInitialData: () => dispatch(SharedActions.handleInitialData())
-})
+});
 
 
 const AppContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(App);
 
 export default AppContainer;

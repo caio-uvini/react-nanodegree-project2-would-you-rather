@@ -1,11 +1,11 @@
-import * as QuestionsActions from '../actions/questions'
+import * as QuestionsActions from '../actions/questions';
 
 
 function handleReceiveQuestions(state, action) {
   return {
     ...state,
     ...action.questions
-  }
+  };
 }
 
 function handleAnswerQuestion(state, action) {
@@ -22,14 +22,14 @@ function handleAnswerQuestion(state, action) {
         votes: currentAnswer.votes.concat(action.authedUser)
       }
     }
-  }
+  };
 }
 
 function handleCreateQuestion(state, action) {
   return {
     ...state,
     [action.question.id]: action.question
-  }
+  };
 }
 
 export default function questions(state = {}, action) {

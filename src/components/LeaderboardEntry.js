@@ -6,7 +6,7 @@ const LeaderboardEntry = (props) => {
 
     const currentUserClass = user.id === authedUser 
       ? 'leaderboard-entry-current-user'
-      : null
+      : null;
 
     return (
       <div className={`leaderboard-entry ${currentUserClass}`}>
@@ -22,24 +22,22 @@ const LeaderboardEntry = (props) => {
           </div>
         </div>  
 
-        
-          <div className='leaderboard-entry-stat'>
-            <div>Asked</div>
-            <div>{score.questions}</div>
-          </div>
+        <div className='leaderboard-entry-stat'>
+          <div>Asked</div>
+          <div>{score.questions}</div>
+        </div>
 
-          <div className='leaderboard-entry-stat'>
-            <div>Answered</div>
-            <div>{score.answers}</div>
-          </div>
+        <div className='leaderboard-entry-stat'>
+          <div>Answered</div>
+          <div>{score.answers}</div>
+        </div>
 
-          <div className='leaderboard-entry-score strong'>
-            <div>Score</div>
-            <div>{score.total}</div>
-          </div>
-        
+        <div className='leaderboard-entry-score strong'>
+          <div>Score</div>
+          <div>{score.total}</div>
+        </div>
       </div>
-    )
+    );
 }
 
 export default LeaderboardEntry;

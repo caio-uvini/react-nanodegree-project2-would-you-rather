@@ -24,7 +24,7 @@ class QuestionCardUnansweredContent extends Component {
     const option = event.target.value;
     this.setState(() => ({
       selectedOption: option
-    }))
+    }));
   }
 
   isChecked = (option) => {
@@ -71,7 +71,7 @@ class QuestionCardUnansweredContent extends Component {
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 
@@ -87,11 +87,11 @@ const mapStateToProps = (state, currentProps) => {
     optionTwo: question.optionTwo,
     authedUser: authedUser
   }
-}
+};
 
 const mapDispatchToProps = (dispatch) => ({
   vote: (authedUser, questionId, option) => dispatch(QuestionsActions.handleAnswerQuestion(authedUser, questionId, option))
-})
+});
 
 const QuestionCardUnansweredContentContainer = connect(
   mapStateToProps,

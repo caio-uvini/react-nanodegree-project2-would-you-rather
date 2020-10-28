@@ -25,7 +25,7 @@ class QuestionCard extends Component {
         </div>        
         <div className='question-content'>{this.props.children}</div>
       </div>
-    )
+    );
 
   }
 
@@ -42,10 +42,9 @@ const mapStateToProps = (state, currentProps) => {
     author: author,
     creationDate: formatDate(question.creationTimestamp)
   }
+};
 
-}
-
-const mapDispatchToProps = (dispatch) => ({})
+const mapDispatchToProps = (dispatch) => ({});
 
 const QuestionCardContainer = connect(
   mapStateToProps,

@@ -11,7 +11,7 @@ import QuestionCardPreviewContent from './QuestionCardPreviewContent';
 const FILTERS = {
   ANSWERED: 'answered',
   UNANSWERED: 'unanswered'
-}
+};
 
 class QuestionList extends Component {
 
@@ -23,7 +23,7 @@ class QuestionList extends Component {
     const option = event.target.value;
     this.setState(() => ({
       filterOption: option
-    }))
+    }));
   }
 
   isChecked = (expectedOption, currentOption) => currentOption === expectedOption;
@@ -79,8 +79,8 @@ class QuestionList extends Component {
             })
           }
         </div>
-	  </div>
-    )
+	    </div>
+    );
   }
 
 }
@@ -99,9 +99,9 @@ const mapStateToProps = (state) => {
   return {
     questionsByStatus: questionsByStatus
   }
-}
+};
 
-const mapDispatchToProps = (dispatch) => ({})
+const mapDispatchToProps = (dispatch) => ({});
 
 const QuestionListContainer = connect(
   mapStateToProps,

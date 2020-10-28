@@ -7,7 +7,7 @@ import * as QuestionsSelectors from '../selectors/questions';
 class QuestionCardPreviewContent extends Component {
 
   handleSeePoll = (history, questionId) => {
-    history.push(`/questions/${questionId}`)
+    history.push(`/questions/${questionId}`);
   }
 
   render() {
@@ -34,7 +34,7 @@ class QuestionCardPreviewContent extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
 }
@@ -49,9 +49,9 @@ const mapStateToProps = (state, currentProps) => {
     optionOne: question.optionOne,
     optionTwo: question.optionTwo
   }
-}
+};
 
-const mapDispatchToProps = (dispatch) => ({})
+const mapDispatchToProps = (dispatch) => ({});
 
 const QuestionCardPreviewContentContainer = withRouter(
   connect(

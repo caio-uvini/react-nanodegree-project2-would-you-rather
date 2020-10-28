@@ -13,10 +13,10 @@ function getInitialData() {
   ]).then(([users, questions]) => ({
     users: users,
     questions: questions
-  }))
+  }));
 }
 
-const saveQuestion = _saveQuestion
-const saveQuestionAnswer = _saveQuestionAnswer
+const saveQuestion = _saveQuestion;
+const saveQuestionAnswer = _saveQuestionAnswer;
 
-export { getInitialData, saveQuestion, saveQuestionAnswer }
+export { getInitialData, saveQuestion, saveQuestionAnswer };

@@ -40,30 +40,30 @@ const NavBar = (props) => {
         }
       </ul>
     </div>
-  )
+  );
 }
 
 const mapStateToProps = (state) => {
 
   const authedUserId = AuthedUserSelectors.getCurrent(state);
   if (!authedUserId) {
-    return {}
+    return {};
   }
 
   const authedUser = UsersSelectors.getUserForDisplay(state, authedUserId);
 
   return {
     authedUser: authedUser
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   signOut: () => dispatch(AuthedUserActions.signOut())
-})
+});
 
 const NavBarContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(NavBar)
+)(NavBar);
 
 export default NavBarContainer;

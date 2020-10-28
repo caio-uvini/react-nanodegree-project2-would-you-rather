@@ -1,15 +1,15 @@
-import * as UsersActions from '../actions/users'
-import * as QuestionsActions from '../actions/questions'
+import * as UsersActions from '../actions/users';
+import * as QuestionsActions from '../actions/questions';
 
 function handleReceiveUsers(state, action) {
   return {
     ...state,
     ...action.users
-  }
+  };
 }
 
 function handleAnswerQuestion(state, action) {
-  const user = state[action.authedUser]
+  const user = state[action.authedUser];
   return {
     ...state,
     [user.id]: {
@@ -19,18 +19,18 @@ function handleAnswerQuestion(state, action) {
         ...{ [action.questionId]: action.answer }
       }
     }
-  }
+  };
 }
 
 function handleCreateQuestion(state, action) {
-  const user = state[action.question.author]
+  const user = state[action.question.author];
   return {
     ...state,
     [user.id]: {
       ...user,
       questions: user.questions.concat(action.question.id)
     }
-  }
+  };
 }
 
 export default function users(state = {}, action) {

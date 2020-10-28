@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import NavBar from './NavBar'
-import QuestionList from './QuestionList'
+import NavBar from './NavBar';
+import QuestionList from './QuestionList';
 
 class Dashboard extends Component {
 
@@ -11,7 +11,7 @@ class Dashboard extends Component {
       	<NavBar />
         <QuestionList />
       </div>
-    )
+    );
   }
 }
 

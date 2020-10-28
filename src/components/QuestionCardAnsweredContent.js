@@ -28,8 +28,7 @@ class QuestionCardAnsweredContent extends Component {
           {chosenOption === 'optionTwo' ? <b>{optTwoText}</b>: optTwoText}
         </div>
       </div>
-    )
-
+    );
   }
 
 }
@@ -52,9 +51,9 @@ const mapStateToProps = (state, currentProps) => {
     },
     stats: stats
   }
-}
+};
 
-const mapDispatchToProps = (dispatch) => ({})
+const mapDispatchToProps = (dispatch) => ({});
 
 const QuestionCardAnsweredContentContainer = connect(
   mapStateToProps,

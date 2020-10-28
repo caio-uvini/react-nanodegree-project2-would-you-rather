@@ -28,15 +28,16 @@ class Leaderboard extends Component {
           }
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   authedUser: AuthedUserSelectors.getCurrent(state),
   leaderboard: UsersSelectors.getLeaderboard(state)
-})
-const mapDispatchToProps = (dispatch) => ({})
+});
+
+const mapDispatchToProps = (dispatch) => ({});
 
 const LeaderboardContainer = connect(
   mapStateToProps,

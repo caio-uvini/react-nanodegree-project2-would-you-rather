@@ -13,7 +13,7 @@ function getAllIdsGroupedByAnswerStatusSorted(state, answers) {
   return {
     answeredIds: answeredQuestionsIds,
     unansweredIds: unansweredQuestionsIds
-  }
+  };
 }
 
 function exists(state, questionId) {
@@ -31,7 +31,7 @@ function getContentById(state, questionId) {
     creationTimestamp: question.timestamp,
     optionOne: question.optionOne.text,
     optionTwo: question.optionTwo.text
-  }
+  };
 }
 
 function getChosenOption(state, questionId, userId) {
@@ -64,13 +64,13 @@ function normalizePercentage(first, second) {
     return {
       first: Math.ceil(first),
       second: Math.floor(second)
-    }
+    };
   }
 
   return {
     first: Math.floor(first),
     second: Math.ceil(second)
-  }
+  };
 }
 
 function getVotesStats(state, questionId) {
@@ -97,7 +97,7 @@ function getVotesStats(state, questionId) {
       count: optionTwoVotesCount,
       relative: normalized.second
     }
-  }
+  };
 }
 
 function hasData(state) {

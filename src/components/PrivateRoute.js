@@ -14,13 +14,13 @@ const PrivateRoute = ({ children, authedUser, ...rest }) => {
       }
     />
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   authedUser: AuthedUserSelectors.getCurrent(state)
-})
+});
 
-const mapDispatchToProps = (dispatch) => ({})
+const mapDispatchToProps = (dispatch) => ({});
 
 const PrivateRouteContainer = connect(
   mapStateToProps,
