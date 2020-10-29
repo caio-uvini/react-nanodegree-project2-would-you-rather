@@ -37,6 +37,24 @@ class NewQuestion extends Component {
     }))
   }
 
+  isFormValid = () => {
+    const {optionOne, optionTwo} = this.state;
+
+    if (!optionOne) {
+      return false;
+    }
+
+    if (!optionTwo) {
+      return false;
+    }
+
+    if (optionOne === optionTwo) {
+      return false;
+    }
+
+    return true;
+  }
+
   render() {
 
     const {optionOne, optionTwo} = this.state;
@@ -69,7 +87,7 @@ class NewQuestion extends Component {
               <button
                 className='btn' 
                 type="submit" 
-                disabled={!optionOne || !optionTwo} 
+                disabled={!this.isFormValid()} 
               >
                 Submit
               </button>
