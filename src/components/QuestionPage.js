@@ -9,6 +9,7 @@ import * as QuestionsSelectors from '../selectors/questions';
 import QuestionCard from './QuestionCard';
 import QuestionCardAnsweredContent from './QuestionCardAnsweredContent';
 import QuestionCardUnansweredContent from './QuestionCardUnansweredContent';
+import NotFound from './NotFound';
 
 const QuestionPage = (props) => {
 
@@ -27,7 +28,7 @@ const QuestionPage = (props) => {
               : <QuestionCardUnansweredContent id={questionId} />
             }
             </QuestionCard>
-          : <div className='not-found'>Question not found!</div>
+          : <NotFound msg={"Question not found!"} />
         }
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
 import PropTypes from 'prop-types';
 
@@ -15,6 +15,7 @@ import QuestionPage from './QuestionPage';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
 import NavBar from './NavBar';
+import NotFound from './NotFound';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -41,23 +42,29 @@ class App extends Component {
             ? null
             : (
                 <div className='container'>
-                  <Route path='/' exact>
-                  {
-                    this.props.authedUser ? <Dashboard /> : <LoginPage />
-                  }
-                  </Route>
-                  
-                  <PrivateRoute path='/questions/:id'>
-                    <QuestionPage />
-                  </PrivateRoute>
-                  
-                  <PrivateRoute path='/add'>
-                    <NewQuestion />
-                  </PrivateRoute>
-                  
-                  <PrivateRoute path='/leaderboard'>
-                    <Leaderboard />
-                  </PrivateRoute>
+                  <Switch>               
+                    <Route path='/' exact>
+                    {
+                      this.props.authedUser ? <Dashboard /> : <LoginPage />
+                    }
+                    </Route>
+                    
+                    <PrivateRoute path='/questions/:id'>
+                      <QuestionPage />
+                    </PrivateRoute>
+                    
+                    <PrivateRoute path='/add'>
+                      <NewQuestion />
+                    </PrivateRoute>
+                    
+                    <PrivateRoute path='/leaderboard'>
+                      <Leaderboard />
+                    </PrivateRoute>
+
+                    <Route>
+                      <NotFound msg={"Ouch! This page doesn't exist!"} />
+                    </Route>
+                  </Switch>
                 </div>
               )
           }
