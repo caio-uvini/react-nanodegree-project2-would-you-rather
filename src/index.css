@@ -81,8 +81,12 @@ select {
 
 .authed-user {
   margin-left: auto;
+  margin-right: 10px;
   text-align: right;
   font-size: 0.8em;
+  height: 40px;
+  align-items: center;
+  display: flex;
 }
 
 .avatar {
