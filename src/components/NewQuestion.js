@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as QuestionsActions from '../actions/questions';
 
-import NavBar from './NavBar';
-
 class NewQuestion extends Component {
 
   static propTypes = {
@@ -45,7 +43,6 @@ class NewQuestion extends Component {
 
     return (
       <div>
-        <NavBar />
         <h1>New Question</h1>
         <div className='new-question'>
           <form className='new-question-form' onSubmit={this.onSubmit}>

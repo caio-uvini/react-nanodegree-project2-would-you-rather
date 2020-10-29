@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as QuestionsSelectors from '../selectors/questions';
 
-import NavBar from './NavBar';
 import QuestionCard from './QuestionCard';
 import QuestionCardAnsweredContent from './QuestionCardAnsweredContent';
 import QuestionCardUnansweredContent from './QuestionCardUnansweredContent';
@@ -17,7 +16,6 @@ const QuestionPage = (props) => {
 
   return (
     <div>
-      <NavBar />
       <h1>Question Details</h1>
       <div className='question-details'>
         {

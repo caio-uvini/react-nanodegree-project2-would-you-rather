@@ -1,15 +1,9 @@
 import React from 'react';
 
-import NavBar from './NavBar';
 import QuestionList from './QuestionList';
 
 const Dashboard = () => {
-  return (
-      <div>
-        <NavBar />
-        <QuestionList />
-      </div>
-    );
+  return <QuestionList />;
 };
 
 export default Dashboard;

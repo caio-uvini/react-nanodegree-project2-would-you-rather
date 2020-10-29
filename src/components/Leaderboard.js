@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import * as AuthedUserSelectors from '../selectors/authedUser';
 import * as UsersSelectors from '../selectors/users';
 
-import NavBar from './NavBar';
 import LeaderboardEntry from './LeaderboardEntry';
 
 const Leaderboard = (props) => {
@@ -14,7 +13,6 @@ const Leaderboard = (props) => {
   
   return (
     <div>
-      <NavBar />
       <h1>Leaderboard</h1>
       <div className='leaderboard'>
         {

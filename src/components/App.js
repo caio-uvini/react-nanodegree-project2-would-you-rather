@@ -14,6 +14,7 @@ import Dashboard from './Dashboard';
 import QuestionPage from './QuestionPage';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
+import NavBar from './NavBar';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -33,6 +34,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Fragment>
+          <NavBar />
           <LoadingBar />
           {
             this.props.loading
